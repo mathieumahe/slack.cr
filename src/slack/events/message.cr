@@ -7,11 +7,14 @@ class Slack
       @@type = "message"
       JSON.mapping(
         type: String,
-        user: String,
-        text: String,
-        ts: String,
-        channel: String,
+        user: String?,
+        text: String?,
+        ts: String?,
+        channel: String?,
         subtype: String?,
+        deleted_ts: String?,
+        message: {type: Slack::Event::Message, nilable: true},
+        previous_message: {type: Slack::Event::Message, nilable: true}
       )
 
       def mentioned_users
